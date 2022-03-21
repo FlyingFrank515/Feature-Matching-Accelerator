@@ -48,7 +48,7 @@ MYORB::MYORB( int N, int t , int op, int st, int et, int kn, int mt, int l, floa
     good_matches = vector<DMatch>();
 }
 
-void MYORB::Matching(){
+Mat MYORB::Matching(){
     cout << "build image pyramid..." << endl;
     FAST_build_pyramid();
     
@@ -91,8 +91,17 @@ void MYORB::Matching(){
     
     // show the match
     DISPLAY_matches();
-
     waitKey(0);
+
+    // Produce corresps_feature
+    Mat corresps_feature;
+    corresps_feature.create(good_matches.size(), 1, CV_32SC4);
+    Vec4i * corresps_feature_ptr = corresps_feature.ptr<Vec4i>();
+    for(int idx = 0, i = 0; idx < good_matches.size(); idx++)
+    {
+        corresps_feature_ptr[i++] = Vec4i(keypoints_1[good_matches[idx].queryIdx].pt.x, keypoints_1[good_matches[idx].queryIdx].pt.y, keypoints_2[good_matches[idx].trainIdx].pt.x, keypoints_2[good_matches[idx].trainIdx].pt.y);
+    }
+    return corresps_feature;
 }
 
 void MYORB::DISPLAY_image(Mat& image, string title){ 

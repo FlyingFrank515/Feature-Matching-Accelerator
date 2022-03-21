@@ -68,7 +68,7 @@ class MYORB {
         MYORB(int, int, int, int, int, int, int, int, float, Mat, Mat, string);
 
         // Called by the main program
-        void    Matching();
+        Mat     Matching();
         
         // Display
         void    DISPLAY_image(Mat&, string);
