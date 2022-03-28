@@ -1,9 +1,9 @@
 ## Schedule ##
 3/21: Finish C++ Model
 
-3/28: Redraw the whole architecture, feature detecting module
+3/28: Experiments, Redraw the whole architecture
 
-4/4 : feature detecting module
+4/4 : Experimental result summary, feature detecting module
 
 4/11: feature detecting module (Midterm)
 
